@@ -1,3 +1,17 @@
+@font-face {
+  font-family: "Cinzel";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("cinzel-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Cinzel";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("cinzel-700.woff2") format("woff2");
+}
 :root {
   --bg: #07060a;
   --panel: #120f0d;
@@ -8,7 +22,7 @@
   --bronze: #c9974f;
   --bronze-dark: #7a5530;
   --button: #3b2a1e;
-  --serif: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  --serif: "Cinzel", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
 }
 * { box-sizing: border-box; }
 html { background: var(--bg); }
@@ -39,6 +53,8 @@ body {
 .js .langs { display: flex; }
 .langs button {
   font: inherit;
+  font-family: var(--serif);
+  font-weight: 700;
   font-size: 0.8rem;
   letter-spacing: 0.1em;
   padding: 4px 10px;
@@ -87,20 +103,31 @@ body {
 }
 .story p { margin: 0; }
 figure { margin: 0; }
-.shot {
+figure { position: relative; container-type: inline-size; }
+.shot { display: block; cursor: zoom-in; }
+.shot img {
   display: block;
-  border: 1px solid var(--line);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
-  cursor: zoom-in;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.75));
 }
-.shot img { display: block; width: 100%; height: auto; }
 figcaption {
-  margin-top: 10px;
-  font-size: 0.8rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  bottom: 12%;
+  margin: 0;
+  text-align: center;
+  pointer-events: none;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(0.8rem, 4.2cqw, 1.9rem);
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+  color: #ecc98a;
+  text-shadow: 0 2px 0 #000, 0 0 10px rgba(0, 0, 0, 0.95), 0 0 26px rgba(0, 0, 0, 0.9);
 }
+.wide figcaption { font-size: clamp(1rem, 3.6cqw, 2.5rem); bottom: 14%; }
 .wide { margin-bottom: 72px; }
 .pillars {
   display: grid;
@@ -112,8 +139,8 @@ figcaption {
 .pillar h2 {
   margin: 0 0 8px;
   font-family: var(--serif);
-  font-size: 1.3rem;
-  font-weight: normal;
+  font-size: 1.25rem;
+  font-weight: 700;
   color: var(--bronze);
 }
 .pillar p { margin: 0; color: var(--muted); }
@@ -140,15 +167,15 @@ dialog img { display: block; max-width: 96vw; max-height: 92vh; width: auto; hei
   margin: 0 0 4px;
   font-family: var(--serif);
   font-size: 2rem;
-  font-weight: normal;
+  font-weight: 700;
   color: var(--bronze);
 }
 .legal .stand { margin: 0 0 32px; color: var(--muted); }
 .legal h2 {
   margin: 40px 0 8px;
   font-family: var(--serif);
-  font-size: 1.3rem;
-  font-weight: normal;
+  font-size: 1.2rem;
+  font-weight: 700;
   color: var(--bronze);
 }
 .legal h3 { margin: 24px 0 6px; font-size: 1rem; color: var(--text); }
@@ -175,6 +202,7 @@ footer {
   flex-wrap: wrap;
   gap: 16px 32px;
   align-items: center;
+  font-family: var(--serif);
   font-size: 0.9rem;
   color: var(--muted);
 }

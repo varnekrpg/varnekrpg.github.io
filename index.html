@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Varnek</title>
-<script>(function(){var l=(navigator.languages&&navigator.languages[0])||navigator.language||'en';l=/^de/i.test(l)?'de':'en';var r=document.documentElement;r.className='js lang-'+l;r.lang=l;})();</script>
+<script>(function(){var l=/[?&]lang=de(&|$)/.test(location.search)?'de':'en';var r=document.documentElement;r.className='js lang-'+l;r.lang=l;})();</script>
 <meta name="description" content="Varnek, a survival action RPG in dark pixel art for Android.">
 <meta name="theme-color" content="#07060a">
 <link rel="icon" type="image/png" href="favicon.png">
@@ -22,8 +22,8 @@
 
   <nav class="topbar" aria-label="Language">
     <div class="langs">
-      <button type="button" data-lang="de" aria-pressed="false">DE</button>
       <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="de" aria-pressed="false">DE</button>
     </div>
   </nav>
 
@@ -48,7 +48,7 @@
     <a class="shot" href="shot-run.webp">
       <img src="shot-run.webp" width="1919" height="1079" alt="Bernard in the middle of a run" data-alt-en="Bernard in the middle of a run" data-alt-de="Bernard mitten im Lauf">
     </a>
-    <figcaption><span class="de">Mitten im Lauf</span><span class="en">In the middle of a run</span></figcaption>
+    <figcaption><span class="en">Action-packed battles for survival</span><span class="de">Actionreiche Kämpfe ums Überleben</span></figcaption>
   </figure>
 
   <section class="pillars">
@@ -74,25 +74,25 @@
       <a class="shot" href="shot-camp.webp">
         <img src="shot-camp.webp" width="1920" height="960" loading="lazy" alt="The camp" data-alt-en="The camp" data-alt-de="Das Lager">
       </a>
-      <figcaption><span class="de">Das Lager</span><span class="en">The camp</span></figcaption>
+      <figcaption><span class="en">A refuge that becomes a new home</span><span class="de">Ein Rückzugsort, der zur neuen Heimat wird</span></figcaption>
     </figure>
     <figure>
       <a class="shot" href="shot-tablet.webp">
         <img src="shot-tablet.webp" width="1920" height="960" loading="lazy" alt="The Glowing Stone Tablet" data-alt-en="The Glowing Stone Tablet" data-alt-de="Die Leuchtende Steintafel">
       </a>
-      <figcaption><span class="de">Die Leuchtende Steintafel</span><span class="en">The Glowing Stone Tablet</span></figcaption>
+      <figcaption><span class="en">Specializations and distinct builds</span><span class="de">Spezialisierungen und unterschiedliche Builds</span></figcaption>
     </figure>
     <figure>
       <a class="shot" href="shot-rival.webp">
         <img src="shot-rival.webp" width="1920" height="960" loading="lazy" alt="The Black Knight" data-alt-en="The Black Knight" data-alt-de="Der Schwarze Ritter">
       </a>
-      <figcaption><span class="de">Der Schwarze Ritter</span><span class="en">The Black Knight</span></figcaption>
+      <figcaption><span class="en">A gripping story</span><span class="de">Eine packende Story</span></figcaption>
     </figure>
     <figure>
       <a class="shot" href="shot-inventory.webp">
         <img src="shot-inventory.webp" width="1920" height="960" loading="lazy" alt="The inventory" data-alt-en="The inventory" data-alt-de="Das Inventar">
       </a>
-      <figcaption><span class="de">Das Inventar</span><span class="en">The inventory</span></figcaption>
+      <figcaption><span class="en">Extensive gear and rare finds</span><span class="de">Umfangreiche Ausrüstung und seltene Funde</span></figcaption>
     </figure>
   </section>
 
