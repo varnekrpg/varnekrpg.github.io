@@ -1,72 +1,301 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="lang-en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Varnek</title>
-<meta name="description" content="Varnek, a dark medieval fantasy survival action RPG for Android.">
+<meta name="description" content="Varnek, a survival action RPG in dark pixel art for Android.">
+<meta name="theme-color" content="#07060a">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Varnek">
+<meta property="og:description" content="A survival action RPG in dark pixel art for Android.">
+<meta property="og:url" content="https://varnekrpg.github.io/">
+<meta property="og:image" content="https://varnekrpg.github.io/varnek-banner.png">
+<meta name="twitter:card" content="summary_large_image">
 <style>
   :root {
-    --bg: #0e0b09;
-    --line: #2c231b;
-    --text: #e6ddd3;
-    --muted: #a3968a;
-    --bronze: #c08a4a;
+    --bg: #07060a;
+    --panel: #120f0d;
+    --line: #2a221b;
+    --text: #e8dfd4;
+    --muted: #a0948a;
+    --bronze: #c9974f;
+    --bronze-dark: #7a5530;
+    --button: #3b2a1e;
     --ember: #e0662a;
   }
   * { box-sizing: border-box; }
+  html { background: var(--bg); }
   body {
     margin: 0;
-    background: var(--bg);
+    background:
+      radial-gradient(ellipse 60% 420px at 50% 0, rgba(140, 70, 25, 0.16), transparent 70%),
+      var(--bg);
     color: var(--text);
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     line-height: 1.6;
   }
-  main { max-width: 640px; margin: 0 auto; padding: 64px 16px; }
-  h1 {
-    margin: 0 0 8px;
-    font-size: 3rem;
-    letter-spacing: 0.2em;
+  .lang-de .en, .lang-en .de { display: none !important; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+
+  .langs { display: none; justify-content: flex-end; gap: 4px; padding-top: 16px; }
+  .js .langs { display: flex; }
+  .langs button {
+    font: inherit;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    color: var(--muted);
+    background: transparent;
+    border: 1px solid var(--line);
+    cursor: pointer;
+  }
+  .langs button[aria-pressed="true"] { color: var(--bronze); border-color: var(--bronze-dark); }
+
+  .hero { text-align: center; padding: 48px 0 64px; }
+  .hero h1 { margin: 0 0 20px; line-height: 0; }
+  .hero h1 img {
+    width: 100%;
+    max-width: 735px;
+    height: auto;
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.8));
+  }
+  .tagline {
+    margin: 0 0 32px;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+    font-size: 1.2rem;
+    color: var(--muted);
+  }
+  .play {
+    display: inline-block;
+    padding: 14px 32px;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    text-decoration: none;
+    background: linear-gradient(#4a3526, var(--button));
+    border: 2px solid var(--bronze);
+    box-shadow: inset 0 0 0 2px #1b130d, 0 6px 24px rgba(0, 0, 0, 0.6);
+  }
+  .play:hover, .play:focus-visible { border-color: #e2b170; color: #fff; }
+
+  .story {
+    max-width: 720px;
+    margin: 0 auto 48px;
+    text-align: center;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+    font-size: 1.25rem;
+    line-height: 1.7;
+  }
+  .story p { margin: 0; }
+
+  figure { margin: 0; }
+  .shot {
+    display: block;
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+    cursor: zoom-in;
+  }
+  .shot img { display: block; width: 100%; height: auto; }
+  figcaption {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
+    color: var(--muted);
+  }
+  .wide { margin-bottom: 72px; }
+
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-bottom: 72px;
+  }
+  .pillar { border-top: 2px solid var(--bronze-dark); padding-top: 20px; }
+  .pillar h2 {
+    margin: 0 0 8px;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: normal;
     color: var(--bronze);
   }
-  .tag { margin: 0 0 40px; color: var(--muted); }
-  section { border-top: 1px solid var(--line); padding: 24px 0; }
-  h2 {
-    margin: 0 0 8px;
-    font-family: system-ui, sans-serif;
-    font-size: 0.9rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ember);
+  .pillar p { margin: 0; color: var(--muted); }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 24px;
+    margin-bottom: 80px;
   }
-  p { margin: 0; }
-  a { color: var(--bronze); }
+
   footer {
-    margin-top: 24px;
-    padding-top: 24px;
     border-top: 1px solid var(--line);
-    font-size: 0.85rem;
+    padding: 32px 0 48px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 32px;
+    align-items: center;
+    font-size: 0.9rem;
     color: var(--muted);
+  }
+  footer a { color: var(--bronze); text-decoration: none; }
+  footer a:hover, footer a:focus-visible { text-decoration: underline; }
+  footer .copy { margin-left: auto; }
+
+  dialog {
+    padding: 0;
+    border: 1px solid var(--line);
+    background: var(--bg);
+    max-width: 96vw;
+    max-height: 92vh;
+    cursor: zoom-out;
+  }
+  dialog::backdrop { background: rgba(0, 0, 0, 0.88); }
+  dialog img { display: block; max-width: 96vw; max-height: 92vh; width: auto; height: auto; }
+
+  @media (max-width: 760px) {
+    .hero { padding-bottom: 40px; }
+    .tagline { font-size: 1.05rem; }
+    .story { font-size: 1.1rem; }
+    .pillars, .gallery { grid-template-columns: 1fr; }
+    .wide, .pillars, .gallery { margin-bottom: 56px; }
+    footer .copy { margin-left: 0; }
   }
 </style>
 </head>
 <body>
-<main>
-  <h1>Varnek</h1>
-  <p class="tag">A dark medieval fantasy survival action RPG for Android.</p>
+<div class="wrap">
 
-  <section>
-    <h2>Privacy Policy</h2>
-    <p><a href="https://sites.google.com/view/varnekprivacypolicy/startseite">Read the privacy policy</a></p>
+  <nav class="langs" aria-label="Language">
+    <button type="button" data-lang="de" aria-pressed="false">DE</button>
+    <button type="button" data-lang="en" aria-pressed="true">EN</button>
+  </nav>
+
+  <header class="hero">
+    <h1><img src="varnek-title.png" width="1960" height="580" alt="Varnek"></h1>
+    <p class="tagline">
+      <span class="de">Ein Survival-Action-RPG in düsterer Pixelart. Für Android.</span>
+      <span class="en">A survival action RPG in dark pixel art. For Android.</span>
+    </p>
+    <a class="play" href="https://play.google.com/store/apps/details?id=com.janks.varnek">
+      <span class="de">Jetzt bei Google Play</span>
+      <span class="en">Get it on Google Play</span>
+    </a>
+  </header>
+
+  <section class="story">
+    <p class="de">Das große Königreich Varnek ist gefallen. Aus der untergehenden Stadt konnte ein Krieger mit einem Mädchen fliehen, das er um jeden Preis beschützen will. Gemeinsam ziehen sie durch eine Welt am Abgrund, auf der Suche nach einem Ort, an dem sie sicher sein können.</p>
+    <p class="en">The great kingdom of Varnek has fallen. A warrior escaped the dying city with a girl he will protect at any cost. Together they travel through a world on the brink, searching for a place where they can be safe.</p>
   </section>
 
-  <section>
-    <h2>Contact</h2>
-    <p><a href="mailto:kroveone@gmail.com">kroveone@gmail.com</a></p>
+  <figure class="wide">
+    <a class="shot" href="shot-run.webp">
+      <img src="shot-run.webp" width="1919" height="1079" alt="Bernard in the middle of a run" data-alt-en="Bernard in the middle of a run" data-alt-de="Bernard mitten im Lauf">
+    </a>
+    <figcaption><span class="de">Mitten im Lauf</span><span class="en">In the middle of a run</span></figcaption>
+  </figure>
+
+  <section class="pillars">
+    <div class="pillar">
+      <h2><span class="de">Die Läufe</span><span class="en">The runs</span></h2>
+      <p class="de">Kämpfe dich durch dichte Horden in brutalen Läufen. Sammle Fähigkeiten und verschmelze sie zu tödlichen Kombinationen.</p>
+      <p class="en">Fight through dense hordes in brutal runs. Collect abilities and fuse them into deadly combinations.</p>
+    </div>
+    <div class="pillar">
+      <h2><span class="de">Das Lager</span><span class="en">The camp</span></h2>
+      <p class="de">Kehre mit Vorräten und Wissen zurück und baue das Lager aus. Überlebende schließen sich an und bringen ihre eigenen Fähigkeiten mit.</p>
+      <p class="en">Return with supplies and knowledge and build up the camp. Survivors join you and bring their own abilities.</p>
+    </div>
+    <div class="pillar">
+      <h2><span class="de">Die Ausrüstung</span><span class="en">The gear</span></h2>
+      <p class="de">Finde Ausrüstung, die deinen Build formt. Fünf Plätze: Waffe, Rüstung, Stiefel, Talisman und Relikt.</p>
+      <p class="en">Find gear that shapes your build. Five slots: weapon, armor, boots, talisman and relic.</p>
+    </div>
   </section>
 
-  <footer>&copy; 2026 Emre Eroglu</footer>
-</main>
+  <section class="gallery">
+    <figure>
+      <a class="shot" href="shot-camp.webp">
+        <img src="shot-camp.webp" width="1920" height="960" loading="lazy" alt="The camp" data-alt-en="The camp" data-alt-de="Das Lager">
+      </a>
+      <figcaption><span class="de">Das Lager</span><span class="en">The camp</span></figcaption>
+    </figure>
+    <figure>
+      <a class="shot" href="shot-tablet.webp">
+        <img src="shot-tablet.webp" width="1920" height="960" loading="lazy" alt="The Glowing Stone Tablet" data-alt-en="The Glowing Stone Tablet" data-alt-de="Die Leuchtende Steintafel">
+      </a>
+      <figcaption><span class="de">Die Leuchtende Steintafel</span><span class="en">The Glowing Stone Tablet</span></figcaption>
+    </figure>
+    <figure>
+      <a class="shot" href="shot-rival.webp">
+        <img src="shot-rival.webp" width="1920" height="960" loading="lazy" alt="The Black Knight" data-alt-en="The Black Knight" data-alt-de="Der Schwarze Ritter">
+      </a>
+      <figcaption><span class="de">Der Schwarze Ritter</span><span class="en">The Black Knight</span></figcaption>
+    </figure>
+    <figure>
+      <a class="shot" href="shot-inventory.webp">
+        <img src="shot-inventory.webp" width="1920" height="960" loading="lazy" alt="The inventory" data-alt-en="The inventory" data-alt-de="Das Inventar">
+      </a>
+      <figcaption><span class="de">Das Inventar</span><span class="en">The inventory</span></figcaption>
+    </figure>
+  </section>
+
+  <footer>
+    <a href="https://sites.google.com/view/varnekprivacypolicy/startseite">
+      <span class="de">Datenschutzerklärung</span><span class="en">Privacy Policy</span>
+    </a>
+    <a href="mailto:kroveone@gmail.com">
+      <span class="de">Kontakt</span><span class="en">Contact</span>
+    </a>
+    <span class="copy">&copy; 2026 Emre Eroglu</span>
+  </footer>
+
+</div>
+
+<dialog id="viewer"><img alt=""></dialog>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  root.classList.add('js');
+
+  function setLang(lang) {
+    root.classList.remove('lang-de', 'lang-en');
+    root.classList.add('lang-' + lang);
+    root.lang = lang;
+    document.querySelectorAll('[data-alt-' + lang + ']').forEach(function (img) {
+      img.alt = img.getAttribute('data-alt-' + lang);
+    });
+    document.querySelectorAll('.langs button').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));
+    });
+  }
+
+  var first = (navigator.languages && navigator.languages[0]) || navigator.language || 'en';
+  setLang(/^de/i.test(first) ? 'de' : 'en');
+
+  document.querySelectorAll('.langs button').forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); });
+  });
+
+  var viewer = document.getElementById('viewer');
+  var big = viewer.querySelector('img');
+  if (typeof viewer.showModal === 'function') {
+    document.querySelectorAll('a.shot').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        big.src = a.getAttribute('href');
+        big.alt = a.querySelector('img').alt;
+        viewer.showModal();
+      });
+    });
+    viewer.addEventListener('click', function () { viewer.close(); });
+  }
+})();
+</script>
 </body>
 </html>
