@@ -4,175 +4,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Varnek</title>
+<script>(function(){var l=(navigator.languages&&navigator.languages[0])||navigator.language||'en';l=/^de/i.test(l)?'de':'en';var r=document.documentElement;r.className='js lang-'+l;r.lang=l;})();</script>
 <meta name="description" content="Varnek, a survival action RPG in dark pixel art for Android.">
 <meta name="theme-color" content="#07060a">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Varnek">
 <meta property="og:description" content="A survival action RPG in dark pixel art for Android.">
 <meta property="og:url" content="https://varnekrpg.github.io/">
 <meta property="og:image" content="https://varnekrpg.github.io/varnek-banner.png">
 <meta name="twitter:card" content="summary_large_image">
-<style>
-  :root {
-    --bg: #07060a;
-    --panel: #120f0d;
-    --line: #2a221b;
-    --text: #e8dfd4;
-    --muted: #a0948a;
-    --bronze: #c9974f;
-    --bronze-dark: #7a5530;
-    --button: #3b2a1e;
-    --ember: #e0662a;
-  }
-  * { box-sizing: border-box; }
-  html { background: var(--bg); }
-  body {
-    margin: 0;
-    background:
-      radial-gradient(ellipse 60% 420px at 50% 0, rgba(140, 70, 25, 0.16), transparent 70%),
-      var(--bg);
-    color: var(--text);
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    line-height: 1.6;
-  }
-  .lang-de .en, .lang-en .de { display: none !important; }
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
-
-  .langs { display: none; justify-content: flex-end; gap: 4px; padding-top: 16px; }
-  .js .langs { display: flex; }
-  .langs button {
-    font: inherit;
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    padding: 4px 10px;
-    color: var(--muted);
-    background: transparent;
-    border: 1px solid var(--line);
-    cursor: pointer;
-  }
-  .langs button[aria-pressed="true"] { color: var(--bronze); border-color: var(--bronze-dark); }
-
-  .hero { text-align: center; padding: 48px 0 64px; }
-  .hero h1 { margin: 0 0 20px; line-height: 0; }
-  .hero h1 img {
-    width: 100%;
-    max-width: 735px;
-    height: auto;
-    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.8));
-  }
-  .tagline {
-    margin: 0 0 32px;
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
-    font-size: 1.2rem;
-    color: var(--muted);
-  }
-  .play {
-    display: inline-block;
-    padding: 14px 32px;
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
-    font-size: 1.1rem;
-    letter-spacing: 0.04em;
-    color: var(--text);
-    text-decoration: none;
-    background: linear-gradient(#4a3526, var(--button));
-    border: 2px solid var(--bronze);
-    box-shadow: inset 0 0 0 2px #1b130d, 0 6px 24px rgba(0, 0, 0, 0.6);
-  }
-  .play:hover, .play:focus-visible { border-color: #e2b170; color: #fff; }
-
-  .story {
-    max-width: 720px;
-    margin: 0 auto 48px;
-    text-align: center;
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
-    font-size: 1.25rem;
-    line-height: 1.7;
-  }
-  .story p { margin: 0; }
-
-  figure { margin: 0; }
-  .shot {
-    display: block;
-    border: 1px solid var(--line);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
-    cursor: zoom-in;
-  }
-  .shot img { display: block; width: 100%; height: auto; }
-  figcaption {
-    margin-top: 10px;
-    font-size: 0.8rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .wide { margin-bottom: 72px; }
-
-  .pillars {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-    margin-bottom: 72px;
-  }
-  .pillar { border-top: 2px solid var(--bronze-dark); padding-top: 20px; }
-  .pillar h2 {
-    margin: 0 0 8px;
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
-    font-size: 1.3rem;
-    font-weight: normal;
-    color: var(--bronze);
-  }
-  .pillar p { margin: 0; color: var(--muted); }
-
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px 24px;
-    margin-bottom: 80px;
-  }
-
-  footer {
-    border-top: 1px solid var(--line);
-    padding: 32px 0 48px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px 32px;
-    align-items: center;
-    font-size: 0.9rem;
-    color: var(--muted);
-  }
-  footer a { color: var(--bronze); text-decoration: none; }
-  footer a:hover, footer a:focus-visible { text-decoration: underline; }
-  footer .copy { margin-left: auto; }
-
-  dialog {
-    padding: 0;
-    border: 1px solid var(--line);
-    background: var(--bg);
-    max-width: 96vw;
-    max-height: 92vh;
-    cursor: zoom-out;
-  }
-  dialog::backdrop { background: rgba(0, 0, 0, 0.88); }
-  dialog img { display: block; max-width: 96vw; max-height: 92vh; width: auto; height: auto; }
-
-  @media (max-width: 760px) {
-    .hero { padding-bottom: 40px; }
-    .tagline { font-size: 1.05rem; }
-    .story { font-size: 1.1rem; }
-    .pillars, .gallery { grid-template-columns: 1fr; }
-    .wide, .pillars, .gallery { margin-bottom: 56px; }
-    footer .copy { margin-left: 0; }
-  }
-</style>
 </head>
 <body>
 <div class="wrap">
 
-  <nav class="langs" aria-label="Language">
-    <button type="button" data-lang="de" aria-pressed="false">DE</button>
-    <button type="button" data-lang="en" aria-pressed="true">EN</button>
+  <nav class="topbar" aria-label="Language">
+    <div class="langs">
+      <button type="button" data-lang="de" aria-pressed="false">DE</button>
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+    </div>
   </nav>
 
   <header class="hero">
@@ -245,57 +97,15 @@
   </section>
 
   <footer>
-    <a href="https://sites.google.com/view/varnekprivacypolicy/startseite">
-      <span class="de">Datenschutzerklärung</span><span class="en">Privacy Policy</span>
-    </a>
-    <a href="mailto:kroveone@gmail.com">
-      <span class="de">Kontakt</span><span class="en">Contact</span>
-    </a>
+    <a href="datenschutz.html"><span class="de">Datenschutz</span><span class="en">Privacy Policy</span></a>
+    <a href="impressum.html"><span class="de">Impressum</span><span class="en">Legal Notice</span></a>
+    <a href="mailto:kroveone@gmail.com"><span class="de">Kontakt</span><span class="en">Contact</span></a>
     <span class="copy">&copy; 2026 Emre Eroglu</span>
   </footer>
 
 </div>
 
 <dialog id="viewer"><img alt=""></dialog>
-
-<script>
-(function () {
-  var root = document.documentElement;
-  root.classList.add('js');
-
-  function setLang(lang) {
-    root.classList.remove('lang-de', 'lang-en');
-    root.classList.add('lang-' + lang);
-    root.lang = lang;
-    document.querySelectorAll('[data-alt-' + lang + ']').forEach(function (img) {
-      img.alt = img.getAttribute('data-alt-' + lang);
-    });
-    document.querySelectorAll('.langs button').forEach(function (b) {
-      b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));
-    });
-  }
-
-  var first = (navigator.languages && navigator.languages[0]) || navigator.language || 'en';
-  setLang(/^de/i.test(first) ? 'de' : 'en');
-
-  document.querySelectorAll('.langs button').forEach(function (b) {
-    b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); });
-  });
-
-  var viewer = document.getElementById('viewer');
-  var big = viewer.querySelector('img');
-  if (typeof viewer.showModal === 'function') {
-    document.querySelectorAll('a.shot').forEach(function (a) {
-      a.addEventListener('click', function (e) {
-        e.preventDefault();
-        big.src = a.getAttribute('href');
-        big.alt = a.querySelector('img').alt;
-        viewer.showModal();
-      });
-    });
-    viewer.addEventListener('click', function () { viewer.close(); });
-  }
-})();
-</script>
+<script src="site.js"></script>
 </body>
 </html>
